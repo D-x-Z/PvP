@@ -125,7 +125,7 @@ public class Files {
             getconfigfile().set("PVP.DEFAULT_POINTS", 10 + "#Points will give on first join");
         }
         if (!getconfigfile().contains("PVP.COOLDOWN_TIMES")) {
-            getconfigfile().set("PVP.COOLDOWN_TIMES", 300 +  "#Times to do command /PvP again");
+            getconfigfile().set("PVP.COOLDOWN_TIMES", 300 + "#Times to do command /PvP again");
         }
         if (!getconfigfile().contains("PVP.POINTS_DEAD")) {
             getconfigfile().set("PVP.POINTS_DEAD", 1 + "#Amount PvP Points will lose when dead to protect PvP Status off");
@@ -139,7 +139,7 @@ public class Files {
         if (!getconfigfile().contains("PVP.STATUS_OFF")) {
             getconfigfile().set("PVP.STATUS_OFF", "Off");
         }
-        if (!getconfigfile().contains("PVP.FIRST_TIME_PROTECT")){
+        if (!getconfigfile().contains("PVP.FIRST_TIME_PROTECT")) {
             getconfigfile().set("PVP.FIRST_TIME_PROTECT", 300);
         }
         saveconfig();

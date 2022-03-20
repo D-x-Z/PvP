@@ -1,0 +1,19 @@
+name: PvP
+version: ${project.parent.version}
+main: net.danh.pvp.PvP
+api-version: 1.13
+authors: [ VoChiDanh ]
+description: ${parent.description}
+softdepend:
+  - WorldGuard
+  - PlaceholderAPI
+commands:
+  pvp:
+    usage: /pvp or /pvptoggle
+    aliases:
+      - pvptoggle
+    description: Toggle PvP
+  pvpadmin:
+    description: Admin Commands
+    permission: pvp.admin
+    permission-message: You do not have enough permission

@@ -1,5 +1,6 @@
 package net.danh.pvp;
 
+import net.danh.bCore;
 import net.danh.pvp.Commands.PvPCommmands;
 import net.danh.pvp.Event.*;
 import net.danh.pvp.Hook.PlaceholderAPI;
@@ -36,19 +37,29 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
         instance = this;
         Metrics metrics = new Metrics(this, 14684);
         metrics.addCustomChart(new SimplePie("plugin_name", () -> getDescription().getName()));
-        registerEventHandlers();
-        Objects.requireNonNull(getCommand("pvp")).setExecutor(new PvPCommmands());
-        Objects.requireNonNull(getCommand("pvpadmin")).setExecutor(new PvPCommmands());
-        if (getServer().getPluginManager().isPluginEnabled("WorldGuard")) {
-            getLogger().log(Level.INFO, "Successfully hooked with WorldGuard v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("WorldGuard")).getDescription().getVersion());
+        if (getServer().getPluginManager().getPlugin("bCore") != null) {
+            getLogger().log(Level.INFO, "Successfully hooked with bCore v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("bCore")).getDescription().getVersion());
+        } else {
+            getLogger().log(Level.INFO, "Unsuccessfully hooked with bCore");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
-        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+        if (getServer().getPluginManager().getPlugin("WorldGuard") != null) {
+            getLogger().log(Level.INFO, "Successfully hooked with WorldGuard v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("WorldGuard")).getDescription().getVersion());
+        } else {
+            getLogger().log(Level.INFO, "Unsuccessfully hooked with WorldGuard");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+        if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new PlaceholderAPI().register();
             getLogger().log(Level.INFO, "Successfully hooked with PlaceholderAPI v" + Objects.requireNonNull(getServer().getPluginManager().getPlugin("PlaceholderAPI")).getDescription().getVersion());
         }
+        registerEventHandlers();
+        Objects.requireNonNull(getCommand("pvp")).setExecutor(new PvPCommmands());
+        Objects.requireNonNull(getCommand("pvpadmin")).setExecutor(new PvPCommmands());
         Files.createfiles();
         Files.checkFiles();
-
         (new BukkitRunnable() {
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
@@ -66,7 +77,7 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
                     }
                 }
             }
-        }).runTaskTimer(this, 20L, 20L);
+        }).runTaskTimer(bCore.getInstance(), 20L, 20L);
     }
 
 
@@ -94,7 +105,7 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
     private void registerEventHandlers() {
         ArrayList<Listener> listeners = initializeListeners();
         EventHandlerRegistry eventHandlerRegistry = new EventHandlerRegistry();
-        eventHandlerRegistry.registerEventHandlers(listeners, this);
+        eventHandlerRegistry.registerEventHandlers(listeners, bCore.getInstance());
     }
 
 

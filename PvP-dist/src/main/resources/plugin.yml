@@ -5,8 +5,10 @@ api-version: 1.13
 authors: [ VoChiDanh ]
 description: ${parent.description}
 softdepend:
-  - WorldGuard
   - PlaceholderAPI
+depend:
+  - bCore
+  - WorldGuard
 commands:
   pvp:
     usage: /pvp or /pvptoggle

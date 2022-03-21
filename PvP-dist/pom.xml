@@ -6,7 +6,7 @@
     <parent>
         <artifactId>PvP</artifactId>
         <groupId>net.danh</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     <artifactId>PvP-dist</artifactId>
     <packaging>jar</packaging>
@@ -35,21 +35,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.13.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>me.clip</groupId>
-            <artifactId>placeholderapi</artifactId>
-            <version>2.11.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.Preponderous-Software</groupId>
-            <artifactId>Ponder</artifactId>
-            <version>07e0c073e9</version>
+            <groupId>com.github.D-x-Z</groupId>
+            <artifactId>bCore</artifactId>
+            <version>2.5</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/bCore.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

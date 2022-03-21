@@ -1,0 +1,14 @@
+LANGUAGE_VERSION: '1.0'
+PVP:
+  COOLDOWN_TIMES: '&aYou can use command /PvP in %time%s'
+  NOT_ENOUGH_POINTS: '&cYou do not have enough PvP Points! You need at least %amount%
+    points'
+  TOGGLE_MESSAGE: '&aPvP Status: %status%'
+  USER_HELP:
+    - '&a/PvP -&e Toggle PvP'
+  ADMIN_HELP:
+    - '&a/PvPAdmin points <set/add/remove> <player> <amount> - &3Add/set/remove PvP
+    Points'
+    - '&a/PvPAdmin status <player> <true/false> - &3Set PvP Status'
+    - '&a/PvPAdmin reload - &3Reload files'
+  PROTECT_PVP_TIMES: '&aProtect PvP in %time%s'

@@ -1,0 +1,10 @@
+CONFIG_VERSION: '1.0'
+DEBUG: false
+PVP:
+  DEFAULT_POINTS: 10 #Points will give on first join
+  COOLDOWN_TIMES: 300 #Times to do command /PvP again
+  POINTS_DEAD: 1 #Amount PvP Points will lose when dead to protect PvP Status off
+  POINTS_TOGGLE: 1 #Amount PvP will lose when do command /PvP
+  STATUS_ON: 'On'
+  STATUS_OFF: 'Off'
+  FIRST_TIME_PROTECT: 300

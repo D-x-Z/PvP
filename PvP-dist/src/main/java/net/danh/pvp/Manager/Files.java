@@ -26,23 +26,8 @@ public class Files {
         languageFile = new File(PvP.getInstance().getDataFolder(), "language.yml");
         dataFile = new File(PvP.getInstance().getDataFolder(), "data.yml");
 
-        if (!configFile.exists()) {
-            configFile.getParentFile().mkdirs();
-            try {
-                configFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (!languageFile.exists()) {
-            languageFile.getParentFile().mkdirs();
-            try {
-                languageFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        if (!configFile.exists()) PvP.getInstance().saveResource("config.yml", false);
+        if (!languageFile.exists()) PvP.getInstance().saveResource("language.yml", false);
 
         if (!dataFile.exists()) {
             dataFile.getParentFile().mkdirs();
@@ -81,7 +66,6 @@ public class Files {
 
 
     public static void reloadfiles() {
-        checkFiles();
         config = YamlConfiguration.loadConfiguration(configFile);
         language = YamlConfiguration.loadConfiguration(languageFile);
         data = YamlConfiguration.loadConfiguration(dataFile);

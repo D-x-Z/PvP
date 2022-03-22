@@ -6,7 +6,7 @@
     <parent>
         <artifactId>PvP</artifactId>
         <groupId>net.danh</groupId>
-        <version>1.0</version>
+        <version>1.1</version>
     </parent>
     <artifactId>PvP-dist</artifactId>
     <packaging>jar</packaging>
@@ -19,7 +19,7 @@
     </properties>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

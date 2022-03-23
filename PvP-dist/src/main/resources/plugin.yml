@@ -11,9 +11,7 @@ depend:
   - WorldGuard
 commands:
   pvp:
-    usage: /pvp or /pvptoggle
-    aliases:
-      - pvptoggle
+    usage: /pvp on/off
     description: Toggle PvP
   pvpadmin:
     description: Admin Commands

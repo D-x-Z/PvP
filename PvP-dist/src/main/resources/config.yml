@@ -5,6 +5,6 @@ PVP:
   COOLDOWN_TIMES: 300 #Times to do command /PvP again
   POINTS_DEAD: 1 #Amount PvP Points will lose when dead to protect PvP Status off
   POINTS_TOGGLE: 1 #Amount PvP will lose when do command /PvP
-  STATUS_ON: 'On'
-  STATUS_OFF: 'Off'
+  STATUS_ON: 'Bật'
+  STATUS_OFF: 'Tắt'
   FIRST_TIME_PROTECT: 300

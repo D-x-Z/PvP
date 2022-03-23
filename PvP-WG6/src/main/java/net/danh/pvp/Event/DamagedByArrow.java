@@ -33,7 +33,7 @@ public class DamagedByArrow implements Listener {
                 Location loc1 = new Location(attacked.getWorld(), attacked.getLocation().getBlockX(), attacked.getLocation().getBlockY(), attacked.getLocation().getBlockZ());
                 RegionContainer container = WorldGuardPlugin.inst().getRegionContainer();
                 RegionQuery query = container.createQuery();
-                if (damagerState || attackedState
+                if (!damagerState || !attackedState
                         || ProtectTime.getProtectTimes(damager) > 0 || ProtectTime.getProtectTimes(attacked) > 0
                         || !query.testState(loc, localPlayer, DefaultFlag.PVP) || !query.testState(loc1, localPlayer1, DefaultFlag.PVP)) {
                     e.setCancelled(true);

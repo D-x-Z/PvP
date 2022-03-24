@@ -95,8 +95,7 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
                 new DamagedByArrow(),
                 new DamagedByFishing(),
                 new DeathEvent(),
-                new JoinEvent(),
-                new KillEvent()
+                new JoinEvent()
         ));
     }
 

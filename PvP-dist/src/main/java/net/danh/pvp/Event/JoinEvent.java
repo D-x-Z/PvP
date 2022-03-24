@@ -1,6 +1,5 @@
 package net.danh.pvp.Event;
 
-import net.danh.Contest.Killing.Killing;
 import net.danh.pvp.Manager.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,9 +16,6 @@ public class JoinEvent implements Listener {
             FirstJoin.setFirstJoin(p, true);
             Points.setPvPPoints(p, Files.getconfigfile().getInt("PVP.DEFAULT_POINTS"));
             ProtectTime.setProtectTimes(p, Files.getconfigfile().getInt("PVP.FIRST_TIME_PROTECT"));
-            Status.TogglePvP(p, false);
-        }
-        if (Killing.getStart()) {
             Status.TogglePvP(p, false);
         }
     }

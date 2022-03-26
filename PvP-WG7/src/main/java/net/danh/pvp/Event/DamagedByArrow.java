@@ -7,7 +7,6 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
-import net.danh.Manager.Credit;
 import net.danh.pvp.Manager.ProtectTime;
 import net.danh.pvp.Manager.Status;
 import org.bukkit.entity.Arrow;
@@ -37,8 +36,7 @@ public class DamagedByArrow implements Listener {
                 RegionQuery query = container.createQuery();
                 if (!damagerState || !attackedState
                         || ProtectTime.getProtectTimes(damager) > 0 || ProtectTime.getProtectTimes(attacked) > 0
-                        || !query.testState(loc, localPlayer, Flags.PVP) || !query.testState(loc1, localPlayer1, Flags.PVP)
-                        || Credit.getCredit(damager) < 50) {
+                        || !query.testState(loc, localPlayer, Flags.PVP) || !query.testState(loc1, localPlayer1, Flags.PVP)) {
                     e.setCancelled(true);
                 }
             }

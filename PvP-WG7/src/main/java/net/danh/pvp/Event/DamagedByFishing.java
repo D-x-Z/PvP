@@ -7,7 +7,6 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
-import net.danh.Manager.Credit;
 import net.danh.pvp.Manager.ProtectTime;
 import net.danh.pvp.Manager.Status;
 import org.bukkit.Material;
@@ -36,8 +35,7 @@ public class DamagedByFishing implements Listener {
             if (damager.getInventory().getItemInMainHand().getType() == Material.FISHING_ROD || damager.getInventory().getItemInOffHand().getType() == Material.FISHING_ROD) {
                 if (!damagerState || !attackedState
                         || ProtectTime.getProtectTimes(damager) > 0 || ProtectTime.getProtectTimes(attacked) > 0
-                        || !query.testState(loc, localPlayer, Flags.PVP) || !query.testState(loc1, localPlayer1, Flags.PVP)
-                        || Credit.getCredit(damager) < 50) {
+                        || !query.testState(loc, localPlayer, Flags.PVP) || !query.testState(loc1, localPlayer1, Flags.PVP)) {
                     e.setCancelled(true);
                 }
             }

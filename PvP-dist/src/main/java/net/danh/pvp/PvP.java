@@ -77,7 +77,7 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
                     }
                 }
             }
-        }).runTaskTimer(bCore.getInstance(), 20L, 20L);
+        }).runTaskTimer(this, 20L, 20L);
     }
 
 
@@ -105,7 +105,7 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
     private void registerEventHandlers() {
         ArrayList<Listener> listeners = initializeListeners();
         EventHandlerRegistry eventHandlerRegistry = new EventHandlerRegistry();
-        eventHandlerRegistry.registerEventHandlers(listeners, bCore.getInstance());
+        eventHandlerRegistry.registerEventHandlers(listeners, this);
     }
 
 

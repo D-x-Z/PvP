@@ -5,7 +5,6 @@ import com.sk89q.worldguard.bukkit.RegionContainer;
 import com.sk89q.worldguard.bukkit.RegionQuery;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.DefaultFlag;
-import net.danh.Manager.Credit;
 import net.danh.pvp.Manager.ProtectTime;
 import net.danh.pvp.Manager.Status;
 import org.bukkit.Location;
@@ -37,8 +36,7 @@ public class DamagedByEntity implements Listener {
             RegionQuery query = container.createQuery();
             if (!damagerState || !attackedState
                     || ProtectTime.getProtectTimes(damager) > 0 || ProtectTime.getProtectTimes(attacked) > 0
-                    || !query.testState(loc, localPlayer, DefaultFlag.PVP) || !query.testState(loc1, localPlayer1, DefaultFlag.PVP)
-                    || Credit.getCredit(damager) < 100) {
+                    || !query.testState(loc, localPlayer, DefaultFlag.PVP) || !query.testState(loc1, localPlayer1, DefaultFlag.PVP)) {
                 e.setCancelled(true);
             }
         } else if (e.getDamager() instanceof Projectile) {
@@ -57,8 +55,7 @@ public class DamagedByEntity implements Listener {
                     RegionQuery query = container.createQuery();
                     if (!damagerState || !attackedState
                             || ProtectTime.getProtectTimes(damager) > 0 || ProtectTime.getProtectTimes(attacked) > 0
-                            || !query.testState(loc, localPlayer, DefaultFlag.PVP) || !query.testState(loc1, localPlayer1, DefaultFlag.PVP)
-                            || Credit.getCredit(damager) < 50) {
+                            || !query.testState(loc, localPlayer, DefaultFlag.PVP) || !query.testState(loc1, localPlayer1, DefaultFlag.PVP)) {
                         e.setCancelled(true);
                     }
                 }

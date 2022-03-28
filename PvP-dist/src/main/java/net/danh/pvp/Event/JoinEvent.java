@@ -56,5 +56,9 @@ public class JoinEvent implements Listener {
             ProtectTime.setProtectTimes(p, Files.getconfigfile().getInt("PVP.FIRST_TIME_PROTECT"));
             Status.TogglePvP(p, false);
         }
+        if (Credit.getCredit(p) == 0 && !Credit.getType(p)) {
+            Credit.setCredit(p, 100D);
+            Credit.setType(p, false);
+        }
     }
 }

@@ -6,7 +6,7 @@
 
     <groupId>net.danh</groupId>
     <artifactId>PvP</artifactId>
-    <version>1.3</version>
+    <version>1.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>PvP-dist</module>

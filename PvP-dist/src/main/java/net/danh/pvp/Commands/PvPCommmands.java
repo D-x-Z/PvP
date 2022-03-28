@@ -36,6 +36,9 @@ public class PvPCommmands implements CommandExecutor {
                                         Cooldown.setCooldown(((Player) sender).getUniqueId(), --timeLeft);
                                         if (timeLeft == 0) {
                                             cancel();
+                                            Status.TogglePvP(Objects.requireNonNull(((Player) sender).getPlayer()), true);
+                                            sender.sendMessage(Files.convert(Objects.requireNonNull(Files.getlanguagefile().getString("PVP.TOGGLE_MESSAGE"))
+                                                    .replaceAll("%status%", Objects.requireNonNull(Files.getconfigfile().getString("PVP.STATUS_ON")))));
                                         }
                                     }
                                 }.runTaskTimer(PvP.getInstance(), 20, 20);

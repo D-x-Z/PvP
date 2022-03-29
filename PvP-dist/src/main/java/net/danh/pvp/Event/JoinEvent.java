@@ -25,40 +25,18 @@ public class JoinEvent implements Listener {
             if (Power.getMaxPower(p) == 0) {
                 Power.setMaxPower(p, Data.getconfigfile().getInt("Max_Power"));
             }
-            if (Lucky.getLuckyChance(p) == 0) {
-                Lucky.setLuckyChance(p, Data.getconfigfile().getInt("Default_Lucky_Chance"));
-            }
             if (Power.getPower(p) == 0) {
                 Power.setPower(p, Power.getMaxPower(p));
-            }
-            if (Weight.getWeight(p) == 0) {
-                Weight.setWeight(p, 0);
-            }
-            if (Weight.getMaxWeight(p) == 0) {
-                Weight.setMaxWeight(p, 5000);
             }
             if (Bank.getBankLevel(p) == 0) {
                 Bank.setBankLevel(p, 1);
             }
-            if (Event.getBlockEvent(p) == 0) {
-                Event.setBlocksEvent(p, 0);
-            }
-            if (PlayerData.getPlayerName(p) == null) {
-                PlayerData.setPlayerName(p);
-            }
-            if (Event.getBlockEvent(p) > 0 && !Mining.getStart()) {
-                Event.setBlocksEvent(p, 0);
-            }
-            if (PlayerData.getBlocks(p) <= 0) {
-                PlayerData.setBlocks(p, 0);
+            if (Credit.getCredit(p) == 0) {
+                Credit.setCredit(p, 100D);
             }
             Points.setPvPPoints(p, Files.getconfigfile().getInt("PVP.DEFAULT_POINTS"));
             ProtectTime.setProtectTimes(p, Files.getconfigfile().getInt("PVP.FIRST_TIME_PROTECT"));
             Status.TogglePvP(p, false);
-        }
-        if (Credit.getCredit(p) == 0 && !Credit.getType(p)) {
-            Credit.setCredit(p, 100D);
-            Credit.setType(p, false);
         }
     }
 }

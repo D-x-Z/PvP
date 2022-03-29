@@ -1,11 +1,11 @@
 package net.danh.pvp;
 
-import net.danh.bCore;
 import net.danh.pvp.Commands.PvPCommmands;
 import net.danh.pvp.Event.*;
 import net.danh.pvp.Hook.PlaceholderAPI;
 import net.danh.pvp.Manager.Files;
 import net.danh.pvp.Manager.ProtectTime;
+import net.danh.pvp.Manager.Status;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TranslatableComponent;
 import org.bstats.bukkit.Metrics;
@@ -75,6 +75,18 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
                             cancel();
                         }
                     }
+                    if (!Status.getPvPStatus(p)) {
+                        int timeLeft = 600;
+                        timeLeft--;
+                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                                new TranslatableComponent(Files.convert("&aTự Động Bật Lại PvP Trong " + timeLeft + " giây")));
+                        if (timeLeft <= 0) {
+                            Status.TogglePvP(Objects.requireNonNull(p.getPlayer()), true);
+                            p.sendMessage(Files.convert(Objects.requireNonNull(Files.getlanguagefile().getString("PVP.TOGGLE_MESSAGE"))
+                                    .replaceAll("%status%", Objects.requireNonNull(Files.getconfigfile().getString("PVP.STATUS_OFF")))));
+                            cancel();
+                        }
+                    }
                 }
             }
         }).runTaskTimer(this, 20L, 20L);
@@ -90,7 +102,7 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
 
     @Contract(" -> new")
     private @NotNull ArrayList<Listener> initializeListeners() {
-        return new ArrayList<Listener>(Arrays.asList(
+        return new ArrayList<>(Arrays.asList(
                 new DamagedByEntity(),
                 new DamagedByArrow(),
                 new DamagedByFishing(),

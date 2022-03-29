@@ -48,7 +48,22 @@
                             <pattern>org.bstats</pattern>
                             <shadedPattern>net.danh</shadedPattern>
                         </relocation>
-                    </relocations>
+                        <relocation>
+                            <pattern>com.cryptomorin.xseries</pattern>
+                            <!-- Be sure to change the package below -->
+                            <shadedPattern>net.danh</shadedPattern>
+                        </relocation>
+                    </relocations>        <filters>
+                    <filter>
+                        <artifact>*:*</artifact>
+                        <excludes>
+                            <exclude>com/cryptomorin/xseries/XBiome*</exclude>
+                            <exclude>com/cryptomorin/xseries/NMSExtras*</exclude>
+                            <exclude>com/cryptomorin/xseries/NoteBlockMusic*</exclude>
+                            <exclude>com/cryptomorin/xseries/SkullCacheListener*</exclude>
+                        </excludes>
+                    </filter>
+                </filters>
                 </configuration>
                 <executions>
                     <execution>
@@ -111,7 +126,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -130,6 +145,11 @@
             <artifactId>bstats-bukkit</artifactId>
             <version>3.0.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.cryptomorin</groupId>
+            <artifactId>XSeries</artifactId>
+            <version>8.7.0</version>
         </dependency>
     </dependencies>
 </project>

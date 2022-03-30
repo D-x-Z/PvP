@@ -3,6 +3,7 @@ version: ${project.parent.version}
 main: net.danh.pvp.PvP
 api-version: 1.13
 authors: [ VoChiDanh ]
+website: https://github.com/D-x-Z/PvP
 description: ${project.parent.description}
 softdepend:
   - PlaceholderAPI

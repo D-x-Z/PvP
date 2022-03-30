@@ -6,14 +6,12 @@ import net.danh.pvp.Manager.Cooldown;
 import net.danh.pvp.Manager.Files;
 import net.danh.pvp.Manager.Points;
 import net.danh.pvp.Manager.Status;
-import net.danh.pvp.PvP;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -28,30 +26,11 @@ public class PvPCommmands implements CommandExecutor {
                     if (args[0].equalsIgnoreCase("off")) {
                         ItemStack item = new ItemStack(Objects.requireNonNull(XMaterial.OAK_LOG.parseMaterial()));
                         if (Objects.requireNonNull(((Player) sender).getPlayer()).getInventory().containsAtLeast(item, Data.getconfigfile().getInt("Req_Log_To_PvP"))) {
-                            int timeLeft = Cooldown.getCooldown(((Player) sender).getUniqueId());
                             ItemStack items = new ItemStack(XMaterial.OAK_LOG.parseMaterial(), Data.getconfigfile().getInt("Req_Log_To_PvP"));
                             ((Player) sender).getPlayer().getInventory().removeItem(items);
-                            if (timeLeft <= 0) {
-                                Cooldown.setCooldown(((Player) sender).getUniqueId(), Files.getconfigfile().getInt("PVP.COOLDOWN_TIMES"));
-                                new BukkitRunnable() {
-                                    @Override
-                                    public void run() {
-                                        int timeLeft = Cooldown.getCooldown(((Player) sender).getUniqueId());
-                                        Cooldown.setCooldown(((Player) sender).getUniqueId(), --timeLeft);
-                                        if (timeLeft <= 0) {
-                                            cancel();
-                                            Status.TogglePvP(Objects.requireNonNull(((Player) sender).getPlayer()), false);
-                                            sender.sendMessage(Files.convert(Objects.requireNonNull(Files.getlanguagefile().getString("PVP.TOGGLE_MESSAGE"))
-                                                    .replaceAll("%status%", Objects.requireNonNull(Files.getconfigfile().getString("PVP.STATUS_OFF")))));
-                                        }
-                                    }
-                                }.runTaskTimer(PvP.getInstance(), 20, 20);
-
-                            } else {
-                                //Hasn't expired yet, shows how many seconds left until it does
-                                sender.sendMessage(Files.convert(Objects.requireNonNull(Files.getlanguagefile().getString("PVP.COOLDOWN_TIMES")).replaceAll("%time%", String.valueOf(timeLeft))));
-                                return true;
-                            }
+                            Status.TogglePvP(Objects.requireNonNull(((Player) sender).getPlayer()), false);
+                            sender.sendMessage(Files.convert(Objects.requireNonNull(Files.getlanguagefile().getString("PVP.TOGGLE_MESSAGE"))
+                                    .replaceAll("%status%", Objects.requireNonNull(Files.getconfigfile().getString("PVP.STATUS_OFF")))));
                         } else {
                             sender.sendMessage(Data.convert(Objects.requireNonNull(Data.getlanguagefile().getString("DO_NOT_ENOUGH_LOG"))
                                     .replaceAll("%amount%", String.valueOf(Data.getconfigfile().getInt("Req_Log_To_PvP")))));

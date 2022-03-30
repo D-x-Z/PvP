@@ -6,7 +6,7 @@
     <parent>
         <artifactId>PvP</artifactId>
         <groupId>net.danh</groupId>
-        <version>1.5-SNAPSHOT</version>
+        <version>1.6</version>
     </parent>
     <artifactId>PvP-WG7</artifactId>
     <packaging>jar</packaging>

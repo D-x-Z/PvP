@@ -60,37 +60,6 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
         Objects.requireNonNull(getCommand("pvpadmin")).setExecutor(new PvPCommmands());
         Files.createfiles();
         Files.checkFiles();
-        (new BukkitRunnable() {
-            public void run() {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (ProtectTime.getProtectTimes(p) > 0) {
-                        int timeLeft = ProtectTime.getProtectTimes(p);
-                        timeLeft--;
-                        ProtectTime.setProtectTimes(p, timeLeft);
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                                new TranslatableComponent(Files.convert(Objects.requireNonNull(Files.getlanguagefile().getString("PVP.PROTECT_PVP_TIMES"))
-                                        .replaceAll("%time%", String.valueOf(ProtectTime.getProtectTimes(p))))));
-                        if (timeLeft <= 0) {
-                            ProtectTime.setProtectTimes(p, 0);
-                            cancel();
-                        }
-                    }
-                    if (!Status.getPvPStatus(p)) {
-                        int timeLeft = ProtectTime.getProtectTimes(p);
-                        timeLeft--;
-                        ProtectTime.setProtectTimes(p, timeLeft);
-                        p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                                new TranslatableComponent(Files.convert("&aTự Động Bật Lại PvP Trong " + timeLeft + " giây")));
-                        if (timeLeft <= 0) {
-                            Status.TogglePvP(Objects.requireNonNull(p.getPlayer()), true);
-                            p.sendMessage(Files.convert(Objects.requireNonNull(Files.getlanguagefile().getString("PVP.TOGGLE_MESSAGE"))
-                                    .replaceAll("%status%", Objects.requireNonNull(Files.getconfigfile().getString("PVP.STATUS_OFF")))));
-                            cancel();
-                        }
-                    }
-                }
-            }
-        }).runTaskTimer(this, 20L, 20L);
     }
 
 

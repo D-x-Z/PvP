@@ -76,8 +76,9 @@ public final class PvP extends PonderBukkitPlugin implements Listener {
                         }
                     }
                     if (!Status.getPvPStatus(p)) {
-                        int timeLeft = 600;
+                        int timeLeft = ProtectTime.getProtectTimes(p);
                         timeLeft--;
+                        ProtectTime.setProtectTimes(p, timeLeft);
                         p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                                 new TranslatableComponent(Files.convert("&aTự Động Bật Lại PvP Trong " + timeLeft + " giây")));
                         if (timeLeft <= 0) {

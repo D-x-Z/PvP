@@ -1,6 +1,5 @@
 package net.danh.pvp.Event;
 
-import net.danh.Contest.Mining.Mining;
 import net.danh.Manager.*;
 import net.danh.pvp.Manager.*;
 import org.bukkit.entity.Player;
